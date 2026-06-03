@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人生活與工作整合儀表板 - Antigravity Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glass-bg"></div>
+    <div class="app-container">
+        
+        <!-- HEADER -->
+        <header class="app-header">
+            <div class="header-logo">
+                <span class="logo-icon">🔮</span>
+                <div class="logo-text">
+                    <h1>認知脈絡儀表板</h1>
+                    <p>Notion 記事與 Google 行事曆邏輯整合</p>
+                </div>
+            </div>
+            
+            <!-- VIEW TOGGLE BUTTONS -->
+            <div class="view-toggle">
+                <button class="toggle-btn active" id="btn-timeline" onclick="switchView('timeline')">🧠 認知時間軸</button>
+                <button class="toggle-btn" id="btn-ai" onclick="switchView('ai')">✨ AI 深度分析</button>
+            </div>
+
+            <div class="header-status">
+                <span class="pulse-indicator"></span>
+                <span id="update-time">資料更新中...</span>
+            </div>
+        </header>
+
+        <!-- SUMMARY STATISTICS -->
+        <section class="summary-section" id="stats-section">
+            <div class="stat-card total" onclick="filterCategory('all')">
+                <div class="stat-icon">🗓️</div>
+                <div class="stat-info">
+                    <h3>全部事件</h3>
+                    <p class="stat-number" id="count-all">0</p>
+                </div>
+            </div>
+            <div class="stat-card work" onclick="filterCategory('work')">
+                <div class="stat-icon">💼</div>
+                <div class="stat-info">
+                    <h3>公務專案</h3>
+                    <p class="stat-number" id="count-work">0</p>
+                </div>
+            </div>
+            <div class="stat-card family" onclick="filterCategory('family')">
+                <div class="stat-icon">🏠</div>
+                <div class="stat-info">
+                    <h3>家庭生活</h3>
+                    <p class="stat-number" id="count-family">0</p>
+                </div>
+            </div>
+            <div class="stat-card health" onclick="filterCategory('health')">
+                <div class="stat-icon">🩺</div>
+                <div class="stat-info">
+                    <h3>健康醫療</h3>
+                    <p class="stat-number" id="count-health">0</p>
+                </div>
+            </div>
+            <div class="stat-card admin" onclick="filterCategory('admin')">
+                <div class="stat-icon">💵</div>
+                <div class="stat-info">
+                    <h3>財務雜務</h3>
+                    <p class="stat-number" id="count-admin">0</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN LAYOUT -->
+        <!-- VIEW 1: TIMELINE & BACKLOG -->
+        <main class="main-content" id="view-timeline">
+            
+            <!-- LEFT COLUMN: TIMELINE -->
+            <section class="timeline-container">
+                <div class="section-title-bar">
+                    <h2>📅 事件時間軸 (未來一個月)</h2>
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="搜尋事件或關鍵字...">
+                    </div>
+                </div>
+                
+                <div class="timeline" id="event-timeline">
+                    <div class="loading-spinner">載入數據中...</div>
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN: NOTION REMINDERS & BACKLOG -->
+            <section class="backlog-container">
+                <div class="section-title-bar">
+                    <h2>📝 Notion 生活與工作備忘錄</h2>
+                </div>
+                <div class="backlog-grid" id="reminder-grid">
+                    <div class="loading-spinner">載入數據中...</div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- VIEW 2: AI COGNITIVE REPORT -->
+        <main class="main-content hidden" id="view-ai">
+            <section class="ai-report-container">
+                <div class="section-title-bar">
+                    <h2>🔮 AI 智能認知分析報告</h2>
+                </div>
+                <div class="ai-report-card" id="ai-report-content">
+                    <div class="loading-spinner">分析報告生成中...</div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- FOOTER / SETUP GUIDE -->
+        <footer class="app-footer">
+            <p>© 2026 Antigravity System. Synology NAS 運作監控中。</p>
+        </footer>
+    </div>
+
+    <script src="app.js?v=3"></script>
+</body>
+</html>
